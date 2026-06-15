@@ -1,0 +1,38 @@
+{
+    "name": "diffus",
+    "version": "0.1.0",
+    "description": "Diffus AI Image/Video generator JavaScript SDK",
+    "license": "MIT",
+    "type": "module",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js"
+        }
+    },
+    "files": [
+        "dist",
+        "LICENSE",
+        "README.md"
+    ],
+    "scripts": {
+        "build": "tsc -p tsconfig.json",
+        "format": "prettier --write . --ignore-path .gitignore",
+        "format:check": "prettier --check . --ignore-path .gitignore",
+        "test": "vitest run",
+        "typecheck": "tsc -p tsconfig.json --noEmit"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    },
+    "dependencies": {
+        "@fal-ai/client": "1.10.1"
+    },
+    "devDependencies": {
+        "prettier": "^3.8.4",
+        "typescript": "^5.8.3",
+        "vitest": "^3.2.4"
+    }
+}
