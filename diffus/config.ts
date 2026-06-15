@@ -19,13 +19,8 @@ function environment(name: string): string | undefined {
     return (globalThis as GlobalWithProcess).process?.env?.[name];
 }
 
-export function credentialsFromEnv(): string {
-    const diffusKey = environment("DIFFUS_KEY");
-    if (diffusKey) {
-        return diffusKey;
-    }
-
-    throw new Error("DIFFUS_KEY is not configured");
+export function credentialsFromEnv(): string | undefined {
+    return environment("DIFFUS_KEY");
 }
 
 export function resolveHosts(): {

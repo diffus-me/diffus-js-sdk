@@ -24,14 +24,5 @@ export {
 export { createDiffusMiddleware } from "./middleware.js";
 
 import { createDiffusClient } from "./client.js";
-import type { FalClient } from "@fal-ai/client";
 
-let defaultClient: FalClient | undefined;
-
-export const fal = new Proxy({} as FalClient, {
-    get(_target, property: keyof FalClient) {
-        defaultClient ??= createDiffusClient();
-        const value = defaultClient[property];
-        return typeof value === "function" ? value.bind(defaultClient) : value;
-    },
-});
+export const fal = createDiffusClient();
