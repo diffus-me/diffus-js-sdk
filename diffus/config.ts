@@ -2,7 +2,10 @@
 // Copyright 2026 Diffus. Licensed under MIT License.
 //
 
-export const VERSION = "0.1.0";
+import { VERSION } from "./version.js";
+
+export { VERSION };
+
 export const USER_AGENT = `diffus/${VERSION} (javascript)`;
 
 export const DEFAULT_RUN_HOST = "diffus.me";

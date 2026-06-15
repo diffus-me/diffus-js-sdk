@@ -33,6 +33,11 @@
         "build": "tsc -p tsconfig.json",
         "format": "prettier --write . --ignore-path .gitignore",
         "format:check": "prettier --check . --ignore-path .gitignore",
+        "generate:version": "node scripts/generate-version.mjs",
+        "prebuild": "npm run generate:version",
+        "prepack": "npm run build",
+        "pretest": "npm run generate:version",
+        "pretypecheck": "npm run generate:version",
         "test": "vitest run",
         "typecheck": "tsc -p tsconfig.json --noEmit"
     },
