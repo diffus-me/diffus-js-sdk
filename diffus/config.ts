@@ -6,7 +6,7 @@ import { VERSION } from "./version.js";
 
 export { VERSION };
 
-export const USER_AGENT = `diffus/${VERSION} (javascript)`;
+export const USER_AGENT = `@diffus/client/${VERSION} (javascript)`;
 
 export const DEFAULT_RUN_HOST = "diffus.me";
 export const QUEUED_POLL_INTERVAL = 3_000;

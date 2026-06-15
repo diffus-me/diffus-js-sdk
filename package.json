@@ -1,5 +1,5 @@
 {
-    "name": "diffus",
+    "name": "@diffus/client",
     "version": "0.1.0",
     "description": "Diffus AI Image/Video generator JavaScript SDK",
     "license": "MIT",
@@ -43,6 +43,9 @@
     },
     "engines": {
         "node": ">=18.0.0"
+    },
+    "publishConfig": {
+        "access": "public"
     },
     "dependencies": {
         "@fal-ai/client": "1.10.1"
