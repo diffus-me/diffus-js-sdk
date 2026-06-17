@@ -1,1 +1,1 @@
-# diffus-js-sdk
+# diffus-javascript-sdk

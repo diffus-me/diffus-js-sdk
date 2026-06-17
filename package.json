@@ -6,7 +6,7 @@
     "homepage": "https://www.diffus.me",
     "repository": {
         "type": "git",
-        "url": "https://github.com/diffus-me/diffus-js-sdk"
+        "url": "https://github.com/diffus-me/diffus-javascript-sdk"
     },
     "keywords": [
         "diffus",
