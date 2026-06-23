@@ -10,28 +10,40 @@ import { wrapQueueClient } from "./queue.js";
 import { createDiffusStorageClient, transformInput } from "./storage.js";
 
 type FalConfig = NonNullable<Parameters<typeof createFalClient>[0]>;
+export type DiffusClientConfig = FalConfig;
+export type DiffusClient = FalClient;
 
-export function createDiffusClient(config: FalConfig = {}): FalClient {
-    const { credentials: configCredentials, proxyUrl, requestMiddleware, ...falConfig } = config;
+export function createDiffusClient(userConfig: FalConfig = {}): DiffusClient {
+    const {
+        credentials: configCredentials,
+        proxyUrl,
+        requestMiddleware: configRequestMiddleware,
+        ...falConfig
+    } = userConfig;
+
     if (proxyUrl !== undefined) {
         throw new Error("Diffus does not support proxyUrl configuration");
     }
 
-    const middleware = requestMiddleware
-        ? withMiddleware(createDiffusMiddleware(), requestMiddleware)
+    const requestMiddleware = configRequestMiddleware
+        ? withMiddleware(createDiffusMiddleware(), configRequestMiddleware)
         : createDiffusMiddleware();
-    const credentials = configCredentials ?? credentialsFromEnv;
+
+    const credentials = () => {
+        const value = "credentials" in userConfig ? configCredentials : credentialsFromEnv;
+        return typeof value === "function" ? value() : value;
+    };
 
     const client = createFalClient({
         credentials,
         ...falConfig,
-        requestMiddleware: middleware,
+        requestMiddleware,
     });
 
     const storage = createDiffusStorageClient({
         credentials,
         fetch: falConfig.fetch,
-        requestMiddleware: middleware,
+        requestMiddleware,
     });
 
     const queue = wrapQueueClient(client.queue, storage);

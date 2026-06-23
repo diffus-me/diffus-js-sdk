@@ -19,12 +19,12 @@ Set your Diffus API key before the first API request.
 export DIFFUS_KEY="your-api-key"
 ```
 
-You can also pass credentials when creating a client:
+You can also configure credentials in JavaScript before making a request:
 
 ```js
-import { createDiffusClient } from "@diffus/client";
+import { fal } from "@diffus/client";
 
-const fal = createDiffusClient({
+fal.config({
     credentials: "your-api-key",
 });
 ```
