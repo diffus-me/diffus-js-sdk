@@ -41,8 +41,8 @@ import { fal } from "@diffus/client";
 const result = await fal.subscribe("diffus-ai/dreamshaper-8", {
     input: {
         prompt: "A cinematic portrait of a dancing girl",
-        aspect_ratio: "16:9",
-        resolution: "720p",
+        width: 768,
+        height: 512,
         batch_size: 2,
     },
 });
